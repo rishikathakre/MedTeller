@@ -321,10 +321,24 @@ def clean_generated_text(text: str) -> str:
 # STREAMLIT UI
 # ============================================================================
 def main():
-    # Header
-    st.title("🩺 MedTeller")
-    st.markdown("### Radiology Report Generation")
-    st.markdown("Upload a chest X-ray image to generate an automated radiology report.")
+    # Remove top padding to move heading to top
+    st.markdown("""
+    <style>
+    .main .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    .stApp {
+        margin-top: -50px;
+    }
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+    """, unsafe_allow_html=True)
+    
+    # Header (compact) - moved to top
+    st.title("🩺 MedTeller - Radiology Report Generator")
     
     # Sidebar for settings
     with st.sidebar:
@@ -424,9 +438,15 @@ full_multimodal_decoder/
         )
         
         if uploaded_file is not None:
-            # Display uploaded image
+            # Display uploaded image (resized to fit better on screen)
             image = Image.open(uploaded_file).convert("RGB")
-            st.image(image, caption=f"📷 {uploaded_file.name}", use_container_width=True)
+            # Resize image to max 400px width to save space
+            max_width = 400
+            if image.size[0] > max_width:
+                ratio = max_width / image.size[0]
+                new_height = int(image.size[1] * ratio)
+                image = image.resize((max_width, new_height), Image.Resampling.LANCZOS)
+            st.image(image, caption=f"📷 {uploaded_file.name}", width=max_width)
             
             # Image info
             st.caption(f"Size: {image.size[0]} x {image.size[1]} pixels")
@@ -470,17 +490,17 @@ full_multimodal_decoder/
             st.markdown(f"""
             <div style="
                 background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                padding: 3px;
-                border-radius: 12px;
-                margin-bottom: 20px;
+                padding: 2px;
+                border-radius: 8px;
+                margin-bottom: 10px;
             ">
                 <div style="
                     background-color: #ffffff;
-                    padding: 20px;
-                    border-radius: 10px;
+                    padding: 12px;
+                    border-radius: 8px;
                 ">
-                    <h4 style="color: #1f77b4; margin-bottom: 15px;">🩺 Radiology Report</h4>
-                    <p style="line-height: 1.8; color: #333;">{report}</p>
+                    <h4 style="color: #1f77b4; margin-bottom: 8px; margin-top: 0; font-size: 1.1em;">🩺 Radiology Report</h4>
+                    <p style="line-height: 1.6; color: #333; margin: 0; font-size: 0.95em;">{report}</p>
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -535,12 +555,12 @@ radiologist for medical interpretation.
                     use_container_width=True
                 )
             
-            # Copy to clipboard area
-            st.markdown("### Copy Report")
+            # Copy to clipboard area (compact)
+            st.markdown("#### Copy Report")
             st.text_area(
                 "Select all and copy (Ctrl+A, Ctrl+C):",
                 report,
-                height=150,
+                height=100,
                 key="copy_area"
             )
             
