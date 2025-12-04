@@ -1,0 +1,189 @@
+{
+  "add_prefix_space": false,
+  "added_tokens_decoder": {
+    "29446": {
+      "content": "interstitial",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50256": {
+      "content": "<|endoftext|>",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "50257": {
+      "content": "<BOS>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "50258": {
+      "content": "<EOS>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "50259": {
+      "content": "<PAD>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "50260": {
+      "content": "<FINDINGS>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "50261": {
+      "content": "<IMPRESSION>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "50262": {
+      "content": "cardiomegaly",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50263": {
+      "content": "atelectasis",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50264": {
+      "content": "consolidation",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50265": {
+      "content": "effusion",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50266": {
+      "content": "pneumothorax",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50267": {
+      "content": "edema",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50268": {
+      "content": "collapse",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50269": {
+      "content": "opacity",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50270": {
+      "content": "opacities",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50271": {
+      "content": "hyperinflation",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50272": {
+      "content": "fibrosis",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50273": {
+      "content": "infiltrate",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50274": {
+      "content": "infiltrates",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "50275": {
+      "content": "pleural",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    }
+  },
+  "additional_special_tokens": [
+    "<FINDINGS>",
+    "<IMPRESSION>"
+  ],
+  "bos_token": "<BOS>",
+  "clean_up_tokenization_spaces": false,
+  "eos_token": "<EOS>",
+  "extra_special_tokens": {},
+  "max_length": 256,
+  "model_max_length": 1024,
+  "pad_token": "<PAD>",
+  "stride": 0,
+  "tokenizer_class": "GPT2Tokenizer",
+  "truncation_side": "right",
+  "truncation_strategy": "longest_first",
+  "unk_token": "<|endoftext|>"
+}

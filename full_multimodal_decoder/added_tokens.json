@@ -1,0 +1,21 @@
+{
+  "<BOS>": 50257,
+  "<EOS>": 50258,
+  "<FINDINGS>": 50260,
+  "<IMPRESSION>": 50261,
+  "<PAD>": 50259,
+  "atelectasis": 50263,
+  "cardiomegaly": 50262,
+  "collapse": 50268,
+  "consolidation": 50264,
+  "edema": 50267,
+  "effusion": 50265,
+  "fibrosis": 50272,
+  "hyperinflation": 50271,
+  "infiltrate": 50273,
+  "infiltrates": 50274,
+  "opacities": 50270,
+  "opacity": 50269,
+  "pleural": 50275,
+  "pneumothorax": 50266
+}

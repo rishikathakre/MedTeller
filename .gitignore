@@ -12,15 +12,6 @@
 *.pt
 !full_multimodal_decoder/mm_model_state.pt
 
-# Model directories (but allow specific files)
-decoder_pretrained/
-decoder_tokenizer/
-sample_decoder_pretrained/
-sample_decoder_tokenizer/
-sample_multimodal_decoder/
-checkpoint-*/
-outputs_full/
-colab_outputs/
 
 # Python
 __pycache__/
@@ -56,11 +47,8 @@ Thumbs.db
 # Data files
 *.csv
 *.tsv
-*.json
 !requirements.txt
 !streamlit_requirements.txt
-!package.json
-!tsconfig.json
 
 # Logs
 *.log
