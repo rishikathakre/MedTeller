@@ -1,0 +1,64 @@
+# Model files (too large for GitHub - use Git LFS for large files)
+*.pth
+*.safetensors
+*.bin
+*.ckpt
+*.h5
+*.pkl
+*.pickle
+
+# Model files tracked by Git LFS (exceptions)
+!full_multimodal_decoder/mm_model_state.pt
+*.pt
+!full_multimodal_decoder/mm_model_state.pt
+
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Data files
+*.csv
+*.tsv
+!requirements.txt
+!streamlit_requirements.txt
+
+# Logs
+*.log
+logs/
+runs/
+wandb/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+
