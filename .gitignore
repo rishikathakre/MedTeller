@@ -1,5 +1,4 @@
-# Model files (too large for GitHub)
-*.pt
+# Model files (too large for GitHub - use Git LFS for large files)
 *.pth
 *.safetensors
 *.bin
@@ -8,8 +7,17 @@
 *.pkl
 *.pickle
 
-# Model directories
-full_multimodal_decoder/
+# Model files tracked by Git LFS (exceptions)
+!full_multimodal_decoder/mm_model_state.pt
+*.pt
+!full_multimodal_decoder/mm_model_state.pt
+
+# Model directories (but allow specific files)
+full_multimodal_decoder/*
+!full_multimodal_decoder/mm_model_state.pt
+!full_multimodal_decoder/*.json
+!full_multimodal_decoder/*.txt
+!full_multimodal_decoder/mm_decoder_tokenizer/
 decoder_pretrained/
 decoder_tokenizer/
 sample_decoder_pretrained/
@@ -69,4 +77,5 @@ wandb/
 *.tmp
 *.temp
 *.bak
+
 
