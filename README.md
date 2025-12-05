@@ -12,8 +12,7 @@
 - [Impact](#impact)  
 - [Installation & Setup](#installation--setup)
 - [Running the Application](#running-the-application)
-- [Demo](#demo)  
-- [License](#license)  
+- [Demo](#demo)   
 
 ---
 
@@ -211,20 +210,12 @@ If your model files are in a different location, you can specify the path in the
 ---
 
 ## Demo
-A web-based interface using **Streamlit** allows:  
-1. Uploading a chest X-ray image  
-2. Receiving a fully generated radiology report  
 
-### Live Demo
 Try MedTeller online without any installation:
 - **🌐 Live Application:** [https://medteller.streamlit.app/](https://medteller.streamlit.app/)
 
 The live demo allows you to upload chest X-ray images and generate radiology reports instantly using our trained model.
 
----
-
-## License
-[MIT License](LICENSE)  
 
 ---
 
