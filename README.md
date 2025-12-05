@@ -10,6 +10,8 @@
 - [Evaluation Metrics](#evaluation-metrics)  
 - [Expected Outcomes](#expected-outcomes)  
 - [Impact](#impact)  
+- [Installation & Setup](#installation--setup)
+- [Running the Application](#running-the-application)
 - [Demo](#demo)  
 - [License](#license)  
 
@@ -47,7 +49,7 @@ Traditional AI models in medical imaging focus on single-disease classification.
 - Resize images to 224 × 224 pixels and normalize intensity values  
 - Extract "Findings" and "Impression" sections from reports  
 - Tokenize text using Byte Pair Encoding (BPE) or WordPiece tokenizer  
-- Split data: 80% train, 10% validation, 10% test  
+- Split data: 70% train, 15% validation, 15% test  
 
 ---
 
@@ -56,7 +58,7 @@ Traditional AI models in medical imaging focus on single-disease classification.
 
 **Components:**  
 - **Vision Encoder:** Pretrained ViT-Base (Vision Transformer) to extract patch embeddings from X-rays  
-- **Text Decoder:** GPT-2 / BART fine-tuned on medical reports for natural language generation  
+- **Text Decoder:** GPT-2 / ClinicalBERT fine-tuned on medical reports for natural language generation  
 - **Cross-Attention Layer:** Aligns visual features with generated text tokens  
 - **Auxiliary Libraries:** scikit-learn, NLTK for evaluation metrics  
 
@@ -71,15 +73,6 @@ Traditional AI models in medical imaging focus on single-disease classification.
 **Textual Similarity Metrics:**  
 - BLEU-1/2/4  
 - ROUGE-L  
-- METEOR  
-
-**Clinical Accuracy Metrics:**  
-- CheXbert Score  
-- RadGraph F1  
-
-**Qualitative Verification:**  
-- Cross-attention heatmap visualization  
-- Manual evaluation for fluency and medical correctness  
 
 ---
 
@@ -99,10 +92,134 @@ MedTeller can:
 
 ---
 
+## Installation & Setup
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed on your system:
+
+- **Python 3.8 or higher** (Python 3.9+ recommended)
+- **pip** (Python package manager)
+- **Git** (to clone the repository)
+
+### Step 1: Clone the Repository
+
+```bash
+git clone <repository-url>
+cd MedTeller
+```
+
+### Step 2: Create a Virtual Environment (Recommended)
+
+It's recommended to use a virtual environment to avoid dependency conflicts:
+
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On macOS/Linux:
+source venv/bin/activate
+# On Windows:
+venv\Scripts\activate
+```
+
+### Step 3: Install Dependencies
+
+Install all required Python packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+The `requirements.txt` includes:
+- `streamlit>=1.28.0` - Web interface framework
+- `torch>=2.0.0` - PyTorch deep learning framework
+- `transformers>=4.30.0` - Hugging Face transformers library
+- `pillow>=9.0.0` - Image processing
+- `safetensors>=0.4.0` - Safe model loading
+
+**Note:** If you encounter issues installing PyTorch, you may need to install it separately based on your system (CPU or GPU). Visit [PyTorch's official website](https://pytorch.org/get-started/locally/) for platform-specific installation instructions.
+
+### Step 4: Verify Model Files
+
+Ensure that the trained model files are present in the `full_multimodal_decoder/` directory. The directory should contain:
+
+```
+full_multimodal_decoder/
+├── mm_model_state.pt          # Trained model weights
+├── tokenizer.json             # Tokenizer configuration
+├── vocab.json                 # Vocabulary file
+├── merges.txt                 # BPE merges (if applicable)
+├── special_tokens_map.json    # Special tokens mapping
+├── tokenizer_config.json      # Tokenizer settings
+└── added_tokens.json          # Additional tokens (if any)
+```
+
+**Important:** If the model files are not present, you'll need to:
+1. Train the model using the provided training scripts, OR
+2. Download the pre-trained model from the repository releases/assets
+
+---
+
+## Running the Application
+
+### Option 1: Use the Live Demo (No Installation Required)
+
+You can try MedTeller immediately without any setup:
+- **🌐 Live Demo:** [https://medteller.streamlit.app/](https://medteller.streamlit.app/)
+
+Simply visit the link, upload a chest X-ray image, and get instant radiology report generation.
+
+### Option 2: Run Locally
+
+### Starting the Streamlit App
+
+Once all dependencies are installed and model files are in place, you can start the web application:
+
+```bash
+streamlit run streamlit_app.py
+```
+
+The application will:
+1. Load the trained model and tokenizer
+2. Start a local web server
+3. Automatically open your default web browser to the application URL (typically `http://localhost:8501`)
+
+If the browser doesn't open automatically, you can manually navigate to the URL shown in the terminal output.
+
+### Using the Application
+
+1. **Upload an Image:**
+   - Click on the upload area or drag and drop a chest X-ray image
+   - Supported formats: PNG, JPG, JPEG, DICOM, BMP, TIFF
+
+2. **Generate Report:**
+   - Click the "Generate Report" button
+   - Wait for the model to process the image and generate the report
+   - The generated radiology report will appear in the right panel
+
+3. **Download Results:**
+   - Download the report as a plain text file
+   - Download a formatted report with metadata
+   - Copy the report text directly from the text area
+
+### Model Directory Configuration
+
+If your model files are in a different location, you can specify the path in the sidebar's "Model Directory" field. The default path is `./full_multimodal_decoder`.
+
+---
+
 ## Demo
 A web-based interface using **Streamlit** allows:  
 1. Uploading a chest X-ray image  
 2. Receiving a fully generated radiology report  
+
+### Live Demo
+Try MedTeller online without any installation:
+- **🌐 Live Application:** [https://medteller.streamlit.app/](https://medteller.streamlit.app/)
+
+The live demo allows you to upload chest X-ray images and generate radiology reports instantly using our trained model.
 
 ---
 
