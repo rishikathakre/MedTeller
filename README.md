@@ -100,6 +100,7 @@ Before you begin, ensure you have the following installed on your system:
 - **Python 3.8 or higher** (Python 3.9+ recommended)
 - **pip** (Python package manager)
 - **Git** (to clone the repository)
+- **Git LFS** (Git Large File Storage - required for downloading model files)
 
 ### Step 1: Clone the Repository
 
@@ -107,6 +108,37 @@ Before you begin, ensure you have the following installed on your system:
 git clone <repository-url>
 cd MedTeller
 ```
+
+### Step 1.5: Install Git LFS and Download Model Files
+
+The model files (including `model.safetensors`) are tracked using Git LFS. You need to install Git LFS and pull the large files:
+
+**Install Git LFS:**
+
+```bash
+# On macOS (using Homebrew)
+brew install git-lfs
+
+# On Ubuntu/Debian
+sudo apt-get install git-lfs
+
+# On Windows (using Chocolatey)
+choco install git-lfs
+
+# Or download from: https://git-lfs.github.com/
+```
+
+**Initialize Git LFS and pull model files:**
+
+```bash
+# Initialize Git LFS in the repository
+git lfs install
+
+# Pull the large files (model weights)
+git lfs pull
+```
+
+**Note:** If you've already cloned the repository, you can run `git lfs pull` to download the LFS-tracked files. The model files will be downloaded to the `full_multimodal_decoder/` directory.
 
 ### Step 2: Create a Virtual Environment (Recommended)
 
@@ -146,7 +178,8 @@ Ensure that the trained model files are present in the `full_multimodal_decoder/
 
 ```
 full_multimodal_decoder/
-├── mm_model_state.pt          # Trained model weights
+├── mm_model_state.pt          # Trained model weights (PyTorch format)
+├── model.safetensors          # Trained model weights (SafeTensors format, tracked with Git LFS)
 ├── tokenizer.json             # Tokenizer configuration
 ├── vocab.json                 # Vocabulary file
 ├── merges.txt                 # BPE merges (if applicable)
@@ -155,9 +188,11 @@ full_multimodal_decoder/
 └── added_tokens.json          # Additional tokens (if any)
 ```
 
-**Important:** If the model files are not present, you'll need to:
-1. Train the model using the provided training scripts, OR
-2. Download the pre-trained model from the repository releases/assets
+**Important Notes:**
+- The `model.safetensors` file is tracked with **Git LFS**. Make sure you've completed Step 1.5 to install Git LFS and pull the large files.
+- If the model files are not present after running `git lfs pull`, you may need to:
+  1. Train the model using the provided training scripts, OR
+  2. Download the pre-trained model from the repository releases/assets
 
 ---
 
